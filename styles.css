@@ -1,0 +1,30 @@
+body {
+  border: 1px dotted black;
+  background-color: white;
+}
+
+.container {
+  border: 1px dotted black;
+}
+
+header {
+  border: 1px dotted black;
+}
+
+.player {
+  border: 1px dotted black;
+}
+
+.music-player {
+  border: 1px dotted black;
+}
+
+.search {
+  border: 1px dotted black;
+  border-top: 2px solid black;
+}
+
+.results {
+  border: 1px dotted black;
+border-top: 2px solid black;
+}
