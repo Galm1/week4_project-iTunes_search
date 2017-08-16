@@ -10,9 +10,7 @@
 
 
 let url = 'https://itunes.apple.com/search?media=music&term=';
-let container = document.querySelector('.container')
 let searchInput = document.querySelector('.searchInput');
-let searchButton = document.querySelector('.searchButton');
 let results = document.querySelector('.results');
 let musicPlayerSection = document.querySelector('.player');
 let musicPlayer = document.querySelector('.music-player');
@@ -32,7 +30,7 @@ function goFetch(searchValue) {
         return;
       }
       response.json().then(function(data) {
-        for (var i = 0; i < data.results.length; i++) {
+        for (let i = 0; i < data.results.length; i++) {
           let image = data.results[i].artworkUrl100;
           let newDiv = document.createElement('div')
           results.appendChild(newDiv)
