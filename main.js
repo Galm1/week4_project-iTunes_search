@@ -10,10 +10,43 @@
 
 
 let url = 'https://itunes.apple.com/search?media=music&term=';
-let searchResults = [];
-let currentTrack = {};
-let searchInput = document.querySelector('#searchInput');
-let searchButton = document.querySelector('.searchbutton');
-let outputResults = document.querySelector('.results');
+let container = document.querySelector('.container')
+let searchInput = document.querySelector('.searchInput');
+let searchButton = document.querySelector('.searchButton');
+let results = document.querySelector('.results');
 let musicPlayerSection = document.querySelector('.player');
 let musicPlayer = document.querySelector('.music-player');
+let form = document.querySelector('.search-form');
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  let searchValue = searchInput.value;
+  goFetch(searchValue);
+});
+
+function goFetch(searchValue) {
+  fetch(url + searchValue)
+    .then(function(response) {
+      if (response.status !== 200) {
+        console.log('There was an issure retrieving the data. Status Code: ' + response.status);
+        return;
+      }
+      response.json().then(function(data) {
+        for (var i = 0; i < data.results.length; i++) {
+          let image = data.results[i].artworkUrl100;
+          let newDiv = document.createElement('div')
+          results.appendChild(newDiv)
+          newDiv.classList.add('return')
+          let audio = data.results[i].previewUrl
+          newDiv.addEventListener('click', function() {
+            musicPlayer.src = audio;
+          });
+          let template = `
+            <img src="${image}" alt="Album Art">
+            <h3>${data.results[i].trackName}</h3>
+            `
+          newDiv.innerHTML += template;
+        }
+      });
+    });
+}
