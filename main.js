@@ -30,9 +30,10 @@ function goFetch(searchValue) {
         return;
       }
       response.json().then(function(data) {
+        results.innerHTML = '';
         for (let i = 0; i < data.results.length; i++) {
           let image = data.results[i].artworkUrl100;
-          let newDiv = document.createElement('div')
+          let newDiv = document.createElement('div');
           results.appendChild(newDiv)
           newDiv.classList.add('return')
           let audio = data.results[i].previewUrl
