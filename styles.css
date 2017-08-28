@@ -23,8 +23,19 @@ header {
   border: 1px dotted black;
   border-top: 2px solid black;
 }
+audio{
+  width:100%;
+}
 
 .results {
+  padding:3% 5%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
   border: 1px dotted black;
   border-top: 2px solid black;
+}
+.return{
+  text-align: center;
+  flex: 0 0 30%;
 }
